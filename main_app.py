@@ -1,7 +1,6 @@
 import streamlit as st
 import torch
 import os
-#import gdown
 
 from io import BytesIO
 from PIL import Image
@@ -24,22 +23,16 @@ def main():
     #Mobilenet
     if st.checkbox("Predict flying objects"):
         st.subheader("Predicting flying objects using mobilenet")
-        flying_object_classify()        
+        flying_object_classify()
 
 def flying_object_classify():
      file: BytesIO = st.file_uploader("Upload an image file", type=["jpg", "png"])
      if file is not None:
-#         url = 'https://drive.google.com/file/d/1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4'
-#         output = 'fo_model.pt'
-#         gdown.download(url, output, quiet=False)
-#         gdd.download_file_from_google_drive(file_id='1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', dest_path='./fo_model.pt', unzip=False)
-#         download_file_from_google_drive('1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', './fo_model_new.pt')
-#         model = torch.load('./fo_model_new.pt')
          if "DYNO" in os.environ:
              st.text('Downloading model from drive..')
-             gdd.download_file_from_google_drive(file_id='1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', dest_path='./fo_model.pt', unzip=False)
+             gdd.download_file_from_google_drive(file_id='1-1Pv1sm0pXqwE_RZhHYuZSHaMunExS_G', dest_path='./flyingobject_model.pt', unzip=False)
              st.text('Download complete')
-             model = torch.load('./fo_model.pt')
+             model = torch.load('./flyingobject_model.pt')
          else:
              model = torch.load('flyingobject_model.pt')
              st.text('Model loaded successfully in local')
