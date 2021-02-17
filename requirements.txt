@@ -1,6 +1,8 @@
+https://download.pytorch.org/whl/cpu/torch-1.6.0%2Bcpu-cp36-cp36m-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.7.0%2Bcpu-cp36-cp36m-linux_x86_64.whl
 Pillow==8.1.0
 requests==2.25.1
 streamlit==0.76.0
-torch==1.7.1
-torchvision==0.8.2
-urllib3==1.26.3
+#torch==1.7.1
+#torchvision==0.8.2
+#urllib3==1.26.3
