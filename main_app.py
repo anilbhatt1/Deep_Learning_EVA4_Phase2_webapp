@@ -1,5 +1,6 @@
 import streamlit as st
 import torch
+import os
 #import gdown
 
 from io import BytesIO
@@ -31,8 +32,8 @@ def flying_object_classify():
 #         gdown.download(url, output, quiet=False)
 #         gdd.download_file_from_google_drive(file_id='1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', dest_path='./fo_model.pt', unzip=False)
 #         download_file_from_google_drive('1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', './fo_model_new.pt')
-#         model = torch.load('fo_model_new.pt')
-         model = torch.load('./flyingobject_model.pt')
+#         model = torch.load('./fo_model_new.pt')
+         model = torch.load('/tmp/flyingobject_model.pt')
          st.text('Model loaded successfully')
          predicted = mobilenet_classify(model, file)
          st.markdown(f'###Model identified uploaded image as {predicted}')
