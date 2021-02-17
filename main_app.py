@@ -29,14 +29,14 @@ def flying_object_classify():
      file: BytesIO = st.file_uploader("Upload an image file", type=["jpg", "png"])
      if file is not None:
          if "DYNO" in os.environ:
-             st.text('Downloading model from drive..')
-             gdd.download_file_from_google_drive(file_id='1-1Pv1sm0pXqwE_RZhHYuZSHaMunExS_G', dest_path='./flyingobject_model.pt', unzip=False)
-             st.text('Download complete')
-             model = torch.jit.load('./flyingobject_model.pt')
-             st.text('Model loaded successfully')
+             st.write('Running in heroku')
          else:
-             model = torch.load('flyingobject_model.pt')
-             st.text('Model loaded successfully in local')
+             st.write('Running in local')
+         st.text('Downloading model from drive..')
+         gdd.download_file_from_google_drive(file_id='1-1Pv1sm0pXqwE_RZhHYuZSHaMunExS_G', dest_path='./flyingobject_model.pt', unzip=False)
+         st.text('Download complete')
+         model = torch.jit.load('./flyingobject_model.pt')
+         st.text('Model loaded successfully')
          predicted = mobilenet_classify(model, file)
          st.markdown(f'###Model identified uploaded image as {predicted}')
 
