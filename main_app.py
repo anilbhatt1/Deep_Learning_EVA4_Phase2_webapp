@@ -6,7 +6,7 @@ from io import BytesIO
 from PIL import Image
 from typing import Dict
 
-from utils import mobilenet_classify, local_css
+from utils import mobilenet_classify, local_css, download_file_from_google_drive
 from google_drive_downloader import GoogleDriveDownloader as gdd
 
 
@@ -30,9 +30,9 @@ def flying_object_classify():
 #         output = 'fo_model.pt'
 #         gdown.download(url, output, quiet=False)
 #         gdd.download_file_from_google_drive(file_id='1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', dest_path='./fo_model.pt', unzip=False)
-#         download_file_from_google_drive('1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', './fo_model_new.pt')
-#         model = torch.load('fo_model_new.pt')
-         model = torch.load('flyingobject_model.pt')
+         download_file_from_google_drive('1-1-e-b2yFAu13t58rUsZoiG8u5c9MkL4', './fo_model_new.pt')
+         model = torch.load('fo_model_new.pt')
+#         model = torch.load('flyingobject_model.pt')
          st.text('Model loaded successfully')
          predicted = mobilenet_classify(model, file)
          st.markdown(f'###Model identified uploaded image as {predicted}')
