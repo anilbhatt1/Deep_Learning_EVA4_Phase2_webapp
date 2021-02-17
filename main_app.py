@@ -32,7 +32,8 @@ def flying_object_classify():
              st.text('Downloading model from drive..')
              gdd.download_file_from_google_drive(file_id='1-1Pv1sm0pXqwE_RZhHYuZSHaMunExS_G', dest_path='./flyingobject_model.pt', unzip=False)
              st.text('Download complete')
-             model = torch.load('./flyingobject_model.pt')
+             model = torch.jit.load('./flyingobject_model.pt')
+             st.text('Model loaded successfully')
          else:
              model = torch.load('flyingobject_model.pt')
              st.text('Model loaded successfully in local')
