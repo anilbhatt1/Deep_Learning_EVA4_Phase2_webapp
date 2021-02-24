@@ -1,9 +1,11 @@
 https://download.pytorch.org/whl/cpu/torch-1.5.0%2Bcpu-cp38-cp38-linux_x86_64.whl
 https://download.pytorch.org/whl/cpu/torchvision-0.6.0%2Bcpu-cp38-cp38-linux_x86_64.whl
 Pillow==8.1.0
-requests==2.25.1
 streamlit==0.76.0
 googledrivedownloader==0.4
+dlib==19.21.1
+opencv-python-headless==4.5.1.48
+urllib3==1.26.3
 #torch==1.7.1
 #torchvision==0.8.2
 #urllib3==1.26.3

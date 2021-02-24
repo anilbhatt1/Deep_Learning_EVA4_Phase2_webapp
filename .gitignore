@@ -26,9 +26,12 @@ venv.bak/
 .env.test.local
 .env.production.local
 __pycache__
+req.txt  
 
 # Pre-trained models (These will be downloaded on the fly)
 flyingobject_model.pt
+shape_predictor_68_face_landmarks.dat
+shape_predictor_68_face_landmarks.dat.bz2
 
 # Back-up directory
 backup/
