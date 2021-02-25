@@ -24,6 +24,6 @@ def write():
                 """
                 )
         i = 0
-        for i in range(5):
+        for i in range(2):
             st.text(' ')
         st.markdown("<h1 style='text-align: center; color: white;font-size: 16px;'> ' Fool didn't know it was impossible, so he did it ! ' - Unknown </h1>", unsafe_allow_html=True)
