@@ -16,7 +16,7 @@ def write():
         st.set_option('deprecation.showfileUploaderEncoding', False)
         st.write("""
 
-                I am Anil Bhatt from Bangalore, India. A deep learning enthusiast who loves to try out practical applications of AI. 
+                I am Anil Bhatt from India. A deep learning enthusiast who loves to try out practical applications of AI. 
                 Loves reading, trekking and watching football. Coordinates 
                 to reach me are as listed below. Thx for checking in. Have a great day !
                 - [Github](https://github.com/anilbhatt1)
@@ -24,6 +24,6 @@ def write():
                 """
                 )
         i = 0
-        for i in range(20):
+        for i in range(5):
             st.text(' ')
         st.markdown("<h1 style='text-align: center; color: white;font-size: 16px;'> ' Fool didn't know it was impossible, so he did it ! ' - Unknown </h1>", unsafe_allow_html=True)
