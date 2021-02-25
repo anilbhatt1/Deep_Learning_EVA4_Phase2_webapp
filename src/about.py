@@ -11,7 +11,7 @@ def write():
         st.text('')
         st.text('')
 
-        img = Image.open('./About_pic.jpg')
+        img = Image.open('./Me.jpg')
         st.image(img, width = 200)
         st.set_option('deprecation.showfileUploaderEncoding', False)
         st.write("""
