@@ -8,8 +8,6 @@ def write():
     with st.spinner("Loading Home ..."):
         local_css("style.css")
         st.markdown("<h1 style='text-align: left; color: black;font-size: 40px;'> Who Am I ? </h1>", unsafe_allow_html=True)
-        st.text('')
-        st.text('')
 
         img = Image.open('./Me.jpg')
         st.image(img, width = 200)
