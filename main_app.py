@@ -3,13 +3,17 @@ import streamlit as st
 import src.home
 import src.flyingobjects
 import src.faceswap
+import src.facealign
+import src.about
 
 from src.utils import local_css
 
 PAGES = {
         "Home":src.home,
         "Flying Objects Prediction":src.flyingobjects,
-        "Face Swap":src.faceswap
+        "Face Swap":src.faceswap,
+        "Face Align":src.facealign,
+        "About":src.about
         }
 
 def main():

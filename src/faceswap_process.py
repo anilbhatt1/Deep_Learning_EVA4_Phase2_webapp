@@ -31,14 +31,11 @@ def swap(file1, file2):
 
          pil_img1 = Image.open(file1).convert('RGB')
          img1 = np.array(pil_img1)
-         img1 = img1[:, :, ::-1].copy()   #Convert RGB to BGR
+         img1 = img1[:, :, ::-1].copy()   #Convert RGB to BGR for open-cv to work with
 
          pil_img2 = Image.open(file2).convert('RGB')
          img2 = np.array(pil_img2)
-         img2 = img2[:, :, ::-1].copy()   #Convert RGB to BGR
-
-         im1Display = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
-         im2Display = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+         img2 = img2[:, :, ::-1].copy()   #Convert RGB to BGR for open-cv to work with
 
          img1Warped = np.copy(img2)
 
@@ -101,6 +98,6 @@ def swap(file1, file2):
 
          # Clone seamlessly.
          output = cv2.seamlessClone(np.uint8(img1Warped), img2, mask, center, cv2.NORMAL_CLONE)
-         swapped_face = Image.fromarray(cv2.cvtColor(output, cv2.COLOR_BGR2RGB))
+         swapped_face = Image.fromarray(cv2.cvtColor(output, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB for display in streamlit UI
 
          st.image([pil_img1, pil_img2,swapped_face], width=200, caption=['Face1', 'Face2', 'Swapped Face'])

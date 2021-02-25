@@ -65,6 +65,7 @@ def similarityTransform(inPoints, outPoints):
 
   # Now we can use estimateRigidTransform for calculating the similarity transform.
   tform = cv2.estimateRigidTransform(np.array([inPts]), np.array([outPts]), False)
+  # tform = cv2.estimateAffine2D(np.array([inPts]), np.array([outPts]))
   return tform
 
 # Normalizes a facial image to a standard size given by outSize.
