@@ -4,6 +4,7 @@ import src.home
 import src.flyingobjects
 import src.faceswap
 import src.facealign
+import src.hpeimage
 import src.about
 
 from src.utils import local_css
@@ -13,6 +14,7 @@ PAGES = {
         "Flying Objects Prediction":src.flyingobjects,
         "Face Swap":src.faceswap,
         "Face Align":src.facealign,
+        "Human Pose Estimation(Image)":src.hpeimage,
         "About":src.about
         }
 
