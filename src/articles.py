@@ -12,7 +12,7 @@ def write():
         st.set_option('deprecation.showfileUploaderEncoding', False)
         st.write("""
 
-                Will update the links to articles that I written on DNN related topics soon !
+                Will update the links to articles that I written on DNN related topics soon ! Thx..
 
                 """
                 )
