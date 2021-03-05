@@ -13,6 +13,6 @@ def write():
         st.write("""
 
                 Will update the links to articles that I written on DNN related topics soon ! Thx..
-
+                --
                 """
                 )
