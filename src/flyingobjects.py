@@ -42,6 +42,7 @@ def flying_object_classify():
      class_names = ['Flying_Bird', 'Large_QuadCopter', 'Small_QuadCopter', 'Winged_Drone']
      file_key  = 'flying_object'
 
+     st.warning('Please upload images belonging to these 4 objects only - **flying birds, large quadcopters, small quadcopters and winged drones**. As the model used is an image classifier, any other objects uploaded will get predicted **incorrectly**.')
      file: BytesIO = st.file_uploader("Upload an image file", type=["jpg", "png"], key=file_key)
      if file is not None:
          model_path = Path("./flyingobject_model.pt")

@@ -1,5 +1,7 @@
 import streamlit as st
 import torch
+import torchvision
+from torchvision import transforms
 import os
 import bz2
 import urllib.request
@@ -9,9 +11,16 @@ from operator import itemgetter
 
 from PIL import Image
 
-import cv2
+import sys, cv2
 import numpy as np
 from google_drive_downloader import GoogleDriveDownloader as gdd
+
+
+mean = [0.485, 0.456, 0.406]
+std  = [0.229, 0.224, 0.225]
+toTensor = transforms.Compose([transforms.ToTensor(), 
+                               transforms.Normalize(mean, std)])
+
 
 threshold      = 0.6
 joints = ['0 - r ankle',     '1 - r knee',      '2 - r hip', 
@@ -50,7 +59,7 @@ get_keypoints = lambda pose_layers: map(itemgetter(1, 3), [cv2.minMaxLoc(pose_ly
 def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
 
-def onnx_get_image_with_points_connected_lines(image_p, out_ht, out_wd):
+def onnx_get_image_with_points_connected_lines(image_p, out_ht, out_wd, ort_outs):
     pose_layers = ort_outs[0][0]
     key_points = list(get_keypoints(pose_layers=pose_layers))
     is_joint_plotted = [False for i in range(len(joints))]
@@ -84,35 +93,35 @@ def onnx_get_image_with_points_connected_lines(image_p, out_ht, out_wd):
     return image_p
 
 def estimate(file):
-
      model_path = './quantized_model_1.onnx'
 
      with st.spinner('Estimating the pose...'):
+
       if file is not None:
-         if not model_path.exists():
+         if not os.path.exists(model_path):
              gdd.download_file_from_google_drive(file_id='112b29KLW1oNgSHDDlHEJzZXVGy62B76a', dest_path='./quantized_model_1.onnx', unzip=False)
              st.text('Model downloaded')
 
          pil_img = Image.open(file).convert('RGB')
          img = np.array(pil_img)
          img = img[:, :, ::-1].copy()   #Convert RGB to BGR for open-cv to work with
+         img = cv2.resize(img, (256, 256))
+         img_resize = toTensor(img).unsqueeze(0) # This will add a dimension of 1 to fake a batch
 
          # Creating onnxruntime session
-         ort_session = onnxruntime.InferenceSession(QUANTIZED_FILE_DIR)
+         ort_session = onnxruntime.InferenceSession(model_path)
 
          # Setting ort_inputs to be fed to onnx quantized model
-         ort_inputs = {ort_session.get_inputs()[0].name: np.squeeze(to_numpy(x.unsqueeze(0)), axis=0)}
+         ort_inputs = {ort_session.get_inputs()[0].name: np.squeeze(to_numpy(img_resize.unsqueeze(0)), axis=0)}  #unsqueeze to remove the dimension we faked
 
          # Output prediction by calling ort_session
          ort_outs = ort_session.run(None, ort_inputs)
 
          out_ht, out_wd = ort_outs[0][0].shape[1], ort_outs[0][0].shape[2]
 
-         st.text('Image downloaded')
-
-         connected_img = onnx_get_image_with_points_connected_lines(img, out_ht, out_wd)
+         connected_img = onnx_get_image_with_points_connected_lines(img, out_ht, out_wd, ort_outs)
 
          pose_img = Image.fromarray(cv2.cvtColor(connected_img, cv2.COLOR_BGR2RGB))
 
-         st.image([pil_img, pose_img], width=200, caption=['Input Img', 'Estimated Pose'])
+         st.image([pil_img, pose_img], caption=['Input Img', 'Estimated Pose'])
 

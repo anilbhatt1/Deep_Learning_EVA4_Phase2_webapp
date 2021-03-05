@@ -5,6 +5,7 @@ import src.flyingobjects
 import src.faceswap
 import src.facealign
 import src.hpeimage
+import src.hpevideo
 import src.about
 
 from src.utils import local_css
@@ -15,6 +16,7 @@ PAGES = {
         "Face Swap":src.faceswap,
         "Face Align":src.facealign,
         "Human Pose Estimation(Image)":src.hpeimage,
+        "Human Pose Estimation(Video)":src.hpevideo,
         "About":src.about
         }
 
