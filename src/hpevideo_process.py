@@ -16,6 +16,7 @@ import sys, cv2
 import numpy as np
 from google_drive_downloader import GoogleDriveDownloader as gdd
 import tempfile
+import datetime
 
 mean = [0.485, 0.456, 0.406]
 std  = [0.229, 0.224, 0.225]
@@ -123,11 +124,17 @@ def estimate(file):
              frame_size = (frame.shape[1], frame.shape[0])
              break
 
+         time_now = datetime.datetime.now()
+         st.markdown(f'Starting process of capture {time_now}')
+
          # Define the codec and create VideoWriter object
          fourcc = cv2.VideoWriter_fourcc(*'XVID')
          out = cv2.VideoWriter('./output_pose.avi',fourcc, 20.0, frame_size)
 
          # Reads video frame-by-frame, predicts pose for each frame and writes back to output video
+         time_now = datetime.datetime.now()
+         st.markdown(f'Started creating frames {time_now}')
+
          while(cap.isOpened()):
              ret, frame = cap.read()
              if ret == True:
@@ -143,11 +150,20 @@ def estimate(file):
              else:
                  break
 
+         time_now = datetime.datetime.now()
+         st.markdown(f'Finished creating frames {time_now}')
+
          cap.release()
          out.release()
          tfile.close()
 
+         time_now = datetime.datetime.now()
+         st.markdown(f'Started converting to mp4 {time_now}')
+
          os.system("ffmpeg -y -i ./output_pose.avi -vcodec libx264 ./output_pose.mp4")  #Converting from avi to mp4 for display as st.video() doesn't work on avi
+
+         time_now = datetime.datetime.now()
+         st.markdown(f'Finished converting to mp4 {time_now}')
 
          # Displaying Video output
          vid_file = open("./output_pose.mp4", 'rb').read()
