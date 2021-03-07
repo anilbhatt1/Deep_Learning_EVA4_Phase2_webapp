@@ -1,3 +1,6 @@
 *.pt
 *.dat
 *.dat.bz2
+*.onnx
+*.avi
+*.mp4

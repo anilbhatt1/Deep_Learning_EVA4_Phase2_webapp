@@ -32,9 +32,11 @@ req.txt
 *.pt
 *.dat
 *.dat.bz2
+*.onnx
 flyingobject_model.pt
 shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat.bz2
+quantized_model_1.onnx
 
 # Back-up directory
 backup/
