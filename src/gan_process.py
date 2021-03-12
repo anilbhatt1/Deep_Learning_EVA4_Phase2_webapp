@@ -44,7 +44,7 @@ def get_sample_image(G, size, z):
     return result
 
 def display_values(range_values, z):
-    st.write(" Random tensor values for the range you selected are as below. Please click on 'GO' button below to generate the car image")
+    st.markdown("### Random tensor values for the range you selected are as below. Please click on 'GO' button below to generate the car image")
     df = z.numpy().reshape(10,10)
     df = pd.DataFrame(df).astype("float")
     st.table(df)
@@ -57,20 +57,18 @@ def generate():
          range_values    = ()  # Passing an empty tuple as car generation for set of images is not based on range of values supplied as input
          z      = tensor_gen(size, n_noise, range_values)
          result = get_sample_image(G, size, z)
-         st.write('result type:', type(result), result.shape)
          # Generate 5 random integers. These integers will used as indexes to select and display the car images from 'result'
          lst = []
          for i in range(5):
              num = random.randint(0, 31)
              lst.append(num)
 
-         #img0 = cv2.cvtColor(result[lst[0]], cv2.COLOR_BGR2RGB)
-
-         img0 = result[lst[0]][:, :, ::-1]   # Converting to RGB format
-         img1 = result[lst[1]][:, :, ::-1]
-         img2 = result[lst[2]][:, :, ::-1]
-         img3 = result[lst[3]][:, :, ::-1]
-         img4 = result[lst[4]][:, :, ::-1]
+         img0 = cv2.cvtColor(result[lst[0]], cv2.COLOR_BGR2RGB)  # Converting to RGB format
+         img1 = cv2.cvtColor(result[lst[1]], cv2.COLOR_BGR2RGB)
+         img2 = cv2.cvtColor(result[lst[2]], cv2.COLOR_BGR2RGB)
+         img3 = cv2.cvtColor(result[lst[3]], cv2.COLOR_BGR2RGB)
+         img4 = cv2.cvtColor(result[lst[4]], cv2.COLOR_BGR2RGB)
+         #img0 = result[lst[0]][:, :, ::-1]   # Converting to RGB format
          st.image([img0, img1, img2, img3, img4])
          st.markdown('### Generated Car Images')
 
