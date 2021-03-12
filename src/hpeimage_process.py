@@ -121,7 +121,6 @@ def estimate(file):
 
          connected_img = onnx_get_image_with_points_connected_lines(img, out_ht, out_wd, ort_outs)
 
-         pose_img = Image.fromarray(cv2.cvtColor(connected_img, cv2.COLOR_BGR2RGB))
+         pose_img = connected_img[:, :, ::-1]  # Converting to RGB
 
          st.image([pil_img, pose_img], caption=['Input Img', 'Estimated Pose'])
-

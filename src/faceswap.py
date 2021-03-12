@@ -21,7 +21,7 @@ def write():
              )
 
     st.set_option('deprecation.showfileUploaderEncoding', False)
-    #Mobilenet
+    #Faceswap
     if st.checkbox("Upload faces to swap"):
         st.subheader("Upload the images")
         face_swap()

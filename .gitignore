@@ -37,6 +37,8 @@ flyingobject_model.pt
 shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat.bz2
 quantized_model_1.onnx
+VAE_CPU_1499_20200922095734.pt
+G_CPU_999_20200910104719.pt
 
 # Back-up directory
 backup/

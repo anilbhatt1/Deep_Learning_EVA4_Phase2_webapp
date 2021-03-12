@@ -21,7 +21,7 @@ def write():
              )
 
     st.set_option('deprecation.showfileUploaderEncoding', False)
-    #Mobilenet
+    #Face-Align
     if st.checkbox("Upload face to Align"):
         st.subheader("Upload the image")
         face_align()

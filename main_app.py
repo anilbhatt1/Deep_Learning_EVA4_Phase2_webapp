@@ -6,6 +6,8 @@ import src.faceswap
 import src.facealign
 import src.hpeimage
 import src.hpevideo
+import src.gan
+import src.vae
 import src.articles
 import src.about
 
@@ -18,6 +20,8 @@ PAGES = {
         "Face Align":src.facealign,
         "Human Pose Estimation(Image)":src.hpeimage,
         "Human Pose Estimation(Video)":src.hpevideo,
+        "GAN - Car Image Generation":src.gan,
+        "VAE - Car Image Reconstruction":src.vae,
         "Articles":src.articles,
         "About":src.about
         }

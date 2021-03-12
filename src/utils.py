@@ -24,7 +24,7 @@ TRANSFORMS: Compose = T.Compose([
 def mobilenet_classify(model: nn.Module, image: BytesIO):
     img: Image  = Image.open(image).convert('RGB')
     img: Tensor = TRANSFORMS(img)
-    img.unsqueeze_(0)
+    img.unsqueeze_(0)   # Adding a fake dimension 
 
     model.eval()
     with torch.no_grad():

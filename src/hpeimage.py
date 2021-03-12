@@ -24,7 +24,7 @@ def write():
              )
 
     st.set_option('deprecation.showfileUploaderEncoding', False)
-    #Mobilenet
+    #Human Pose Estimation
     if st.checkbox("Upload image to estimate pose"):
         st.subheader("Upload the image")
         hpe_image()
