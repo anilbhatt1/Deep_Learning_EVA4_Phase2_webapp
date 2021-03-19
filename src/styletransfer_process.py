@@ -39,10 +39,10 @@ def generate(file):
         st.exception("ExceptionError('Please give an input image in valid format')")
 
 def style_process(style, file):
-    model_candy_path        = './candy_cpu_scripted.pt'
-    model_udnie_path        = './udnie_cpu_scripted.pt'
-    model_mosaic_path       = './mosaic_cpu_scripted.pt'
-    model_rainprincess_path = './rain_princess_cpu_scripted.pt'
+    model_candy_path        = './candy_cpu_traced.pt'
+    model_udnie_path        = './udnie_cpu_traced.pt'
+    model_mosaic_path       = './mosaic_cpu_traced.pt'
+    model_rainprincess_path = './rain_princess_cpu_traced.pt'
 
     with st.spinner('Generating style image...'):
         '''
@@ -50,38 +50,38 @@ def style_process(style, file):
 
          if not os.path.exists(model_zip_path):
             gdd.download_file_from_google_drive(file_id='1RclvV5Ep2c2BYxGDxQyEHFgnkcVQG8J8', dest_path='./fast_style_transfer_models_cpu.zip', unzip=False)
-            st.text('Model zip file downloaded')         
+            st.text('Model zip file downloaded')
 
             with ZipFile('./fast_style_transfer_models_cpu.zip', mode='r') as input:
                 input.extractall('.')
                 st.text('Models unzipped and downloaded')
         '''
         if not os.path.exists(model_candy_path):
-            gdd.download_file_from_google_drive(file_id='1yzul6mvlu5OKSK6UZ_Efc1fpPWuxdI0S', dest_path='./candy_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-MpwW29JQY3bGevRkJnFymK_UHkrwP61', dest_path='./candy_cpu_traced.pt', unzip=False)
             st.text('Candy model file downloaded')
         
         if os.path.exists(model_candy_path):
             st.text('Candy Model path exists')
-            style_mosaic = torch.jit.load('./candy_cpu_scripted.pt')
+            style_mosaic = torch.jit.load('./candy_cpu_traced.pt')
         
         if not os.path.exists(model_udnie_path):
-            gdd.download_file_from_google_drive(file_id='1-EnLg9ABLpVLBeuCfsgSY3IOCudom-rv', dest_path='./udnie_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-EyQvMroSjbwaqIzL7FeZGy2TRXvgakN', dest_path='./udnie_cpu_traced.pt', unzip=False)
             st.text('Udnie model file downloaded')
 
         if os.path.exists(model_udnie_path):
             st.text('Udnie Model path exists')
 
         if not os.path.exists(model_mosaic_path):
-            gdd.download_file_from_google_drive(file_id='1-5ukXuRXbIkDRGPZWvvsbs8__l92GruQ', dest_path='./mosaic_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-Hnt-HGmsGriyb0cgFlOI5GdJ4KIxHL9', dest_path='./mosaic_cpu_traced.pt', unzip=False)
             st.text('Mosaic model file downloaded')
 
         if os.path.exists(model_mosaic_path):
             st.text('Mosaic Model path exists')
-            style_mosaic = torch.jit.load('./mosaic_cpu_scripted.pt')
+            style_mosaic = torch.jit.load('./mosaic_cpu_traced.pt')
             st.text('Mosaic model loaded')
 
         if not os.path.exists(model_rainprincess_path):
-            gdd.download_file_from_google_drive(file_id='1-7x6-kSSsgpuDPIWjAPauV-pstSxWKTd', dest_path='./rain_princess_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-EqMdJXBQnyeGWWuPkMNzaeNN00JNe7i', dest_path='./rain_princess_cpu_traced.pt', unzip=False)
             st.text('Rain-Princess model file downloaded')
 
         if os.path.exists(model_rainprincess_path):
