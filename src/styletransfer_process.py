@@ -105,6 +105,7 @@ def style_process(style, file):
 
 def gen_style_img(content_img, model_path):
          style_model = torch.jit.load(model_path)
+         st.text('Model loaded')
          with torch.no_grad():
              syle_img  = style_model(content_img)
          style_img = style_img.squeeze(0).permute(1, 2, 0).clamp(0,255).numpy()
