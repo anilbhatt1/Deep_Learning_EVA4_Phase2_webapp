@@ -57,7 +57,7 @@ def style_process(style, file):
                 st.text('Models unzipped and downloaded')
         '''
         if not os.path.exists(model_candy_path):
-            gdd.download_file_from_google_drive(file_id='1zc_Y1EizuOoHd-v-dKmHJ-bEQq2HFjA2', dest_path='./candy_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1yzul6mvlu5OKSK6UZ_Efc1fpPWuxdI0S', dest_path='./candy_cpu_scripted.pt', unzip=False)
             st.text('Candy model file downloaded')
         
         if os.path.exists(model_candy_path):
@@ -65,14 +65,14 @@ def style_process(style, file):
             style_mosaic = torch.jit.load('./candy_cpu_scripted.pt')
         
         if not os.path.exists(model_udnie_path):
-            gdd.download_file_from_google_drive(file_id='13iyRJC8vMblpMUORkXQL9eKOHXU3-XIu', dest_path='./udnie_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-EnLg9ABLpVLBeuCfsgSY3IOCudom-rv', dest_path='./udnie_cpu_scripted.pt', unzip=False)
             st.text('Udnie model file downloaded')
 
         if os.path.exists(model_udnie_path):
             st.text('Udnie Model path exists')
 
         if not os.path.exists(model_mosaic_path):
-            gdd.download_file_from_google_drive(file_id='1LFW1FyjC2MD_iMVBkCAeiA8eKhN-0JIw', dest_path='./mosaic_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-5ukXuRXbIkDRGPZWvvsbs8__l92GruQ', dest_path='./mosaic_cpu_scripted.pt', unzip=False)
             st.text('Mosaic model file downloaded')
 
         if os.path.exists(model_mosaic_path):
@@ -81,7 +81,7 @@ def style_process(style, file):
             st.text('Mosaic model loaded')
 
         if not os.path.exists(model_rainprincess_path):
-            gdd.download_file_from_google_drive(file_id='1LtFipvF8To2bMFhfAyRLHUpeUSkOC92N', dest_path='./rain_princess_cpu_scripted.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='1-7x6-kSSsgpuDPIWjAPauV-pstSxWKTd', dest_path='./rain_princess_cpu_scripted.pt', unzip=False)
             st.text('Rain-Princess model file downloaded')
 
         if os.path.exists(model_rainprincess_path):
