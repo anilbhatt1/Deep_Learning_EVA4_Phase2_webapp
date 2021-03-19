@@ -18,7 +18,6 @@ n_noise   = 100
 G_path = './G_CPU_999_20200910104719.pt'
 if not os.path.exists(G_path):
     gdd.download_file_from_google_drive(file_id='1YgB6vBw4iS1n4LgOau-BrX0UhLVC9PZw', dest_path='./G_CPU_999_20200910104719.pt', unzip=False)
-    st.text('Image generator model downloaded')
 G = torch.jit.load('./G_CPU_999_20200910104719.pt')
 
 '''

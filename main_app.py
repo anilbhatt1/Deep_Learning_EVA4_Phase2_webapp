@@ -26,7 +26,7 @@ PAGES = {
         "GAN - Car Image Generation":src.gan,
         "VAE - Car Image Reconstruction":src.vae,
         "SRGAN - Image Super Resolution":src.srgan,
-#        "Style Transfer":src.styletransfer,
+        "Style Transfer":src.styletransfer,
         "Articles":src.articles,
         "About":src.about
         }
