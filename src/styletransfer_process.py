@@ -42,7 +42,8 @@ def style_process(style, file):
     model_zip_path          = './fast_style_transfer_models_cpu.zip'
     model_candy_path        = './candy_cpu_traced.pt'
     model_udnie_path        = './udnie_cpu_traced.pt'
-    model_mosaic_path       = './mosaic_cpu_traced.pt'
+    #model_mosaic_path       = './mosaic_cpu_traced.pt'
+    model_mosaic_path       = './srgan499_cpu_traced.pt'
     model_rainprincess_path = './rain_princess_cpu_traced.pt'
 
     with st.spinner('Generating style image...'):
@@ -66,7 +67,8 @@ def style_process(style, file):
             st.text('Udnie model file downloaded')
 
         if not os.path.exists(model_mosaic_path):
-            gdd.download_file_from_google_drive(file_id='1-Hnt-HGmsGriyb0cgFlOI5GdJ4KIxHL9', dest_path='./mosaic_cpu_traced.pt', unzip=False)
+            gdd.download_file_from_google_drive(file_id='14pRhTuXQmu1QEkRU0NovEIabL1ERXqxv', dest_path='./srgan499_cpu_traced.pt', unzip=False)
+            #gdd.download_file_from_google_drive(file_id='1-Hnt-HGmsGriyb0cgFlOI5GdJ4KIxHL9', dest_path='./mosaic_cpu_traced.pt', unzip=False)
             st.text('Mosaic model file downloaded')
 
         if not os.path.exists(model_rainprincess_path):
@@ -104,7 +106,7 @@ def style_process(style, file):
 def gen_style_img(content_img, model_path):
          style_model = torch.jit.load(model_path)
          with torch.no_grad():
-             syle_img  = style_mosaic(content_img)
+             syle_img  = style_model(content_img)
          style_img = style_img.squeeze(0).permute(1, 2, 0).clamp(0,255).numpy()
          style_img = Image.fromarray(style_img.astype("uint8"))
          return style_img
