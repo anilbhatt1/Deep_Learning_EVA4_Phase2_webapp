@@ -39,6 +39,7 @@ def generate(file):
         st.exception("ExceptionError('Please give an input image in valid format')")
 
 def style_process(style, file):
+    model_zip_path          = './fast_style_transfer_models_cpu.zip'
     model_candy_path        = './candy_cpu_traced.pt'
     model_udnie_path        = './udnie_cpu_traced.pt'
     model_mosaic_path       = './mosaic_cpu_traced.pt'
@@ -48,7 +49,7 @@ def style_process(style, file):
 
          #Commenting out downloading zip file as heroku app is facing time-out...
 
-         if not os.path.exists(model_zip_path):
+        if not os.path.exists(model_zip_path):
             gdd.download_file_from_google_drive(file_id='1RclvV5Ep2c2BYxGDxQyEHFgnkcVQG8J8', dest_path='./fast_style_transfer_models_cpu.zip', unzip=False)
             st.text('Model zip file downloaded')
 
