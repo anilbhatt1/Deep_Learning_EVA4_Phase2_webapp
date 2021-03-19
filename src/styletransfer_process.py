@@ -88,7 +88,7 @@ def style_process(style, file):
         if os.path.exists(model_rainprincess_path):
             st.text('RP Model path exists')
 
-        '''
+        
         pil_img     = Image.open(file).convert('RGB')
         st.text('pil_img generated')
         st.image(pil_img)
