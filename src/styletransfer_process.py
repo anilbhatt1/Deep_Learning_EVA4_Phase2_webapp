@@ -32,8 +32,8 @@ def display_transform():
 
 def generate(file):
     if file is not None:
-        style = st.selectbox("Select the style", ["Mosaic", "Udnie", "Candy", "Rain_Princess", "All"])
         if st.checkbox("Generate style transferred image"):
+            style = st.selectbox("Select the style", ["Mosaic", "Udnie", "Candy", "Rain_Princess", "All"])
             style_process(style, file)
     else:
         st.exception("ExceptionError('Please give an input image in valid format')")
@@ -45,8 +45,8 @@ def style_process(style, file):
     model_rainprincess_path = './rain_princess_cpu_traced.pt'
 
     with st.spinner('Generating style image...'):
-        '''
-         Commenting out downloading zip file as heroku app is facing time-out...
+
+         #Commenting out downloading zip file as heroku app is facing time-out...
 
          if not os.path.exists(model_zip_path):
             gdd.download_file_from_google_drive(file_id='1RclvV5Ep2c2BYxGDxQyEHFgnkcVQG8J8', dest_path='./fast_style_transfer_models_cpu.zip', unzip=False)
@@ -62,7 +62,7 @@ def style_process(style, file):
         
         if os.path.exists(model_candy_path):
             st.text('Candy Model path exists')
-            style_mosaic = torch.jit.load('./candy_cpu_traced.pt')
+        #    style_mosaic = torch.jit.load('./candy_cpu_traced.pt')
         
         if not os.path.exists(model_udnie_path):
             gdd.download_file_from_google_drive(file_id='1-EyQvMroSjbwaqIzL7FeZGy2TRXvgakN', dest_path='./udnie_cpu_traced.pt', unzip=False)
@@ -77,8 +77,8 @@ def style_process(style, file):
 
         if os.path.exists(model_mosaic_path):
             st.text('Mosaic Model path exists')
-            style_mosaic = torch.jit.load('./mosaic_cpu_traced.pt')
-            st.text('Mosaic model loaded')
+#            style_mosaic = torch.jit.load('./mosaic_cpu_traced.pt')
+#            st.text('Mosaic model loaded')
 
         if not os.path.exists(model_rainprincess_path):
             gdd.download_file_from_google_drive(file_id='1-EqMdJXBQnyeGWWuPkMNzaeNN00JNe7i', dest_path='./rain_princess_cpu_traced.pt', unzip=False)
@@ -87,7 +87,7 @@ def style_process(style, file):
         if os.path.exists(model_rainprincess_path):
             st.text('RP Model path exists')
 
-
+        '''
         pil_img     = Image.open(file).convert('RGB')
         st.text('pil_img generated')
         st.image(pil_img)
