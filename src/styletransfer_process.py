@@ -76,6 +76,8 @@ def style_process(style, file):
 
         if os.path.exists(model_mosaic_path):
             st.text('Mosaic Model path exists')
+            style_mosaic = torch.jit.load('./mosaic_cpu_scripted.pt')
+            st.text('Mosaic model loaded')
 
         if not os.path.exists(model_rainprincess_path):
             gdd.download_file_from_google_drive(file_id='1LtFipvF8To2bMFhfAyRLHUpeUSkOC92N', dest_path='./rain_princess_cpu_scripted.pt', unzip=False)
