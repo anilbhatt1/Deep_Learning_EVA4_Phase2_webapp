@@ -64,12 +64,18 @@ def style_process(style, file):
             st.text('Rain-Princess model file downloaded')
 
         pil_img     = Image.open(file).convert('RGB')
+        st.text('pil_img generated')
         content_img = content_transform(pil_img).unsqueeze(0)
+        st.text('transformed')
         if style == 'Mosaic':
+            st.text('Entering Mosaic style')
             img_m       = gen_style_img(content_img, model_mosaic_path)
+            st.text('Mosaic generated')
             img_lst     = [pil_img, img_m]
             caption_lst = ['Input Img','Mosaic Style Img']
+            st.text('Mosaic list complete')
         elif style == 'Udnie':
+            st.text('Entering Udenie style')
             img_u       = gen_style_img(content_img, model_udnie_path)
             img_lst     = [pil_img, img_u]
             caption_lst = ['Input Img','Udnie Style Img']  
@@ -88,14 +94,17 @@ def style_process(style, file):
             img_r       = gen_style_img(content_img, model_rainprincess_path)
             img_lst     = [pil_img, img_m, img_u, img_c, img_r]
             caption_lst = ['Input Img','Mosaic Style Img','Udnie Style Img','Candy Style Img','Rain-Princess Style Img'] 
-
+        st.text('About to display') 
         st.image(img_lst,caption=caption_lst, width=250)
 
 def gen_style_img(content_img, model_path):
-         
+         st.text('Trying to load model')
          style_mosaic = torch.jit.load(model_path)
+         st.text('Model loaded')
          with torch.no_grad():
              mosaic_img  = style_mosaic(content_img)
+             st.text('Generated image from model')
          mosaic_img = mosaic_img.squeeze(0).permute(1, 2, 0).clamp(0,255).numpy()
-         mosaic_img = Image.fromarray(mosaic_img.astype("uint8")) 
+         mosaic_img = Image.fromarray(mosaic_img.astype("uint8"))
+         st.text('Modified image & about to return')
          return mosaic_img
