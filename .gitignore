@@ -33,12 +33,19 @@ req.txt
 *.dat
 *.dat.bz2
 *.onnx
+*.zip
 flyingobject_model.pt
 shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat.bz2
 quantized_model_1.onnx
 VAE_CPU_1499_20200922095734.pt
 G_CPU_999_20200910104719.pt
+SRGAN_netG_CPU_999_20210315122150.pt
+fast_style_transfer_models_cpu.zip
+candy_cpu_scripted.pt
+mosaic_cpu_scripted.pt
+rain_princess_cpu_scripted.pt
+udnie_cpu_scripted.pt
 
 # Back-up directory
 backup/
