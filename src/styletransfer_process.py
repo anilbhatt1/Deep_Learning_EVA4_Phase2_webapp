@@ -21,6 +21,15 @@ TRANSFORMS: Compose = T.Compose([
     T.Lambda(lambda x: x.mul(255))
 ])
 
+def display_transform():
+    return Compose([
+        ToPILImage(),
+        Resize(400),
+        CenterCrop(400),
+        ToTensor(),
+        T.Lambda(lambda x: x.mul(255))
+    ])
+
 def generate(file):
     if file is not None:
         style = st.selectbox("Select the style", ["Mosaic", "Udnie", "Candy", "Rain_Princess", "All"])
@@ -65,17 +74,18 @@ def style_process(style, file):
 
         pil_img     = Image.open(file).convert('RGB')
         st.text('pil_img generated')
+        st.image(pil_img)
         content_img = TRANSFORMS(pil_img)
         st.text('Transforms generated')
         content_img.unsqueeze_(0)
         st.text('transformed')
         if style == 'Mosaic':
             st.text('Entering Mosaic style')
-            img_m       = gen_style_img(content_img, model_mosaic_path)
+#            img_m       = gen_style_img(content_img, model_mosaic_path)
             st.text('Mosaic generated')
-            img_lst     = [pil_img, img_m]
-            caption_lst = ['Input Img','Mosaic Style Img']
-            st.text('Mosaic list complete')
+#            img_lst     = [pil_img, img_m]
+#            caption_lst = ['Input Img','Mosaic Style Img']
+#            st.text('Mosaic list complete')
         elif style == 'Udnie':
             st.text('Entering Udenie style')
             img_u       = gen_style_img(content_img, model_udnie_path)
@@ -97,7 +107,7 @@ def style_process(style, file):
             img_lst     = [pil_img, img_m, img_u, img_c, img_r]
             caption_lst = ['Input Img','Mosaic Style Img','Udnie Style Img','Candy Style Img','Rain-Princess Style Img'] 
         st.text('About to display') 
-        st.image(img_lst,caption=caption_lst, width=250)
+#        st.image(img_lst,caption=caption_lst, width=250)
 
 def gen_style_img(content_img, model_path):
          st.text('Trying to load model')
