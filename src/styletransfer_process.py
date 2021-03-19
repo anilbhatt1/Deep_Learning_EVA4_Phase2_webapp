@@ -15,8 +15,8 @@ import sys, cv2
 import numpy as np
 from google_drive_downloader import GoogleDriveDownloader as gdd
 
-content_transform = T.Compose([
-    Resize(400),
+TRANSFORMS: Compose = T.Compose([
+    T.Resize((400, 400)),
     T.ToTensor(),
     T.Lambda(lambda x: x.mul(255))
 ])
@@ -65,7 +65,8 @@ def style_process(style, file):
 
         pil_img     = Image.open(file).convert('RGB')
         st.text('pil_img generated')
-        content_img = content_transform(pil_img).unsqueeze(0)
+        content_img = TRANSFORMS(pil_img)
+        content_img.unsqueeze_(0)
         st.text('transformed')
         if style == 'Mosaic':
             st.text('Entering Mosaic style')
