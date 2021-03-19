@@ -30,7 +30,6 @@ def generate(file):
          if file is not None:
              if not os.path.exists(model_path):
                  gdd.download_file_from_google_drive(file_id='1AX0BRIYN5ty-nDwBWi7NE3XbB2QT0ucl', dest_path='./VAE_CPU_1499_20200922095734.pt', unzip=False)
-                 st.text('Model downloaded')
 
          pil_img = Image.open(file).convert('RGB')
          img = TRANSFORMS(pil_img)

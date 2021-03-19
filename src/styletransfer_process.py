@@ -43,7 +43,6 @@ def style_process(style, file):
     model_candy_path        = './candy_cpu_py5.pt'
     model_udnie_path        = './udnie_cpu_py5.pt'
     model_mosaic_path       = './mosaic_cpu_py5.pt'
-    #model_mosaic_path       = './srgan499_cpu_traced.pt'
     model_rainprincess_path = './rain_princess_cpu_py5.pt'
 
     with st.spinner('Generating style image...'):
@@ -60,20 +59,15 @@ def style_process(style, file):
         '''
         if not os.path.exists(model_candy_path):
             gdd.download_file_from_google_drive(file_id='1-DSKViaiNLEci28ONB_Hn_iMx-ytwtJa', dest_path=model_candy_path, unzip=False)
-            st.text('Candy model file downloaded')
 
         if not os.path.exists(model_udnie_path):
             gdd.download_file_from_google_drive(file_id='1-PsvOCwh5V3R4IwKRsbRS_6se6qhWwR0', dest_path=model_udnie_path, unzip=False)
-            st.text('Udnie model file downloaded')
 
         if not os.path.exists(model_mosaic_path):
-            #gdd.download_file_from_google_drive(file_id='14pRhTuXQmu1QEkRU0NovEIabL1ERXqxv', dest_path='./srgan499_cpu_traced.pt', unzip=False)
             gdd.download_file_from_google_drive(file_id='1-Ebe_gAM_VAvYmj87KXdRdwYK2ahIMsh', dest_path=model_mosaic_path, unzip=False)
-            st.text('Mosaic model file downloaded')
 
         if not os.path.exists(model_rainprincess_path):
             gdd.download_file_from_google_drive(file_id='1-NhbCvtvB9uGV7HA1C13PaHKdkdvgwyS', dest_path=model_rainprincess_path, unzip=False)
-            st.text('Rain-Princess model file downloaded')
 
         pil_img     = Image.open(file).convert('RGB')
         content_img = TRANSFORMS(pil_img)
@@ -105,7 +99,6 @@ def style_process(style, file):
 
 def gen_style_img(content_img, model_path):
          style_model = torch.jit.load(model_path)
-         st.text('Model loaded')
          with torch.no_grad():
              style_img  = style_model(content_img)
          style_img = style_img.squeeze(0).permute(1, 2, 0).clamp(0,255).numpy()

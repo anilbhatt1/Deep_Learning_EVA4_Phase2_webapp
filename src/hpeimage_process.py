@@ -100,7 +100,6 @@ def estimate(file):
       if file is not None:
          if not os.path.exists(model_path):
              gdd.download_file_from_google_drive(file_id='112b29KLW1oNgSHDDlHEJzZXVGy62B76a', dest_path='./quantized_model_1.onnx', unzip=False)
-             st.text('Model downloaded')
 
          pil_img = Image.open(file).convert('RGB')
          img = np.array(pil_img)

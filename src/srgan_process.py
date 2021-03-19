@@ -35,7 +35,6 @@ def generate(file):
          if file is not None:
              if not os.path.exists(model_path):
                  gdd.download_file_from_google_drive(file_id='13Q4h-AQzDqWesNbQ5CSK2rBu1JU0I2We', dest_path='./SRGAN_netG_CPU_999_20210315122150.pt', unzip=False)
-                 st.text('Model downloaded')
 
          pil_img = Image.open(file).convert('RGB')
          sr_img = TRANSFORMS(pil_img)
