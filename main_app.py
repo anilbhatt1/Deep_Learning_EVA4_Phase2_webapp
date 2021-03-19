@@ -1,5 +1,6 @@
 import streamlit as st
 
+import src
 import src.home
 import src.flyingobjects
 import src.faceswap
@@ -8,6 +9,8 @@ import src.hpeimage
 import src.hpevideo
 import src.gan
 import src.vae
+import src.srgan
+import src.styletransfer
 import src.articles
 import src.about
 
@@ -22,6 +25,8 @@ PAGES = {
         "Human Pose Estimation(Video)":src.hpevideo,
         "GAN - Car Image Generation":src.gan,
         "VAE - Car Image Reconstruction":src.vae,
+        "SRGAN - Image Super Resolution":src.srgan,
+        "Style Transfer":src.styletransfer,
         "Articles":src.articles,
         "About":src.about
         }
