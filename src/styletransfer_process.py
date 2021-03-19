@@ -66,6 +66,7 @@ def style_process(style, file):
         pil_img     = Image.open(file).convert('RGB')
         st.text('pil_img generated')
         content_img = TRANSFORMS(pil_img)
+        st.text('Transforms generated')
         content_img.unsqueeze_(0)
         st.text('transformed')
         if style == 'Mosaic':
