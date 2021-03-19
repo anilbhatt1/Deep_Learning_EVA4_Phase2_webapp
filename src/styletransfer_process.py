@@ -59,18 +59,31 @@ def style_process(style, file):
         if not os.path.exists(model_candy_path):
             gdd.download_file_from_google_drive(file_id='1zc_Y1EizuOoHd-v-dKmHJ-bEQq2HFjA2', dest_path='./candy_cpu_scripted.pt', unzip=False)
             st.text('Candy model file downloaded')
-
+        
+        if os.path.exists(model_candy_path):
+            st.text('Candy Model path exists')
+        
         if not os.path.exists(model_udnie_path):
             gdd.download_file_from_google_drive(file_id='13iyRJC8vMblpMUORkXQL9eKOHXU3-XIu', dest_path='./udnie_cpu_scripted.pt', unzip=False)
             st.text('Udnie model file downloaded')
+
+        if os.path.exists(model_udnie_path):
+            st.text('Udnie Model path exists')
 
         if not os.path.exists(model_mosaic_path):
             gdd.download_file_from_google_drive(file_id='1LFW1FyjC2MD_iMVBkCAeiA8eKhN-0JIw', dest_path='./mosaic_cpu_scripted.pt', unzip=False)
             st.text('Mosaic model file downloaded')
 
+        if os.path.exists(model_mosaic_path):
+            st.text('Mosaic Model path exists')
+
         if not os.path.exists(model_rainprincess_path):
             gdd.download_file_from_google_drive(file_id='1LtFipvF8To2bMFhfAyRLHUpeUSkOC92N', dest_path='./rain_princess_cpu_scripted.pt', unzip=False)
             st.text('Rain-Princess model file downloaded')
+
+        if os.path.exists(model_rainprincess_path):
+            st.text('RP Model path exists')
+
 
         pil_img     = Image.open(file).convert('RGB')
         st.text('pil_img generated')
@@ -81,7 +94,7 @@ def style_process(style, file):
         st.text('transformed')
         if style == 'Mosaic':
             st.text('Entering Mosaic style')
-#            img_m       = gen_style_img(content_img, model_mosaic_path)
+            img_m       = gen_style_img(content_img, model_mosaic_path)
             st.text('Mosaic generated')
 #            img_lst     = [pil_img, img_m]
 #            caption_lst = ['Input Img','Mosaic Style Img']
@@ -111,12 +124,14 @@ def style_process(style, file):
 
 def gen_style_img(content_img, model_path):
          st.text('Trying to load model')
-         style_mosaic = torch.jit.load(model_path)
-         st.text('Model loaded')
-         with torch.no_grad():
-             mosaic_img  = style_mosaic(content_img)
-             st.text('Generated image from model')
-         mosaic_img = mosaic_img.squeeze(0).permute(1, 2, 0).clamp(0,255).numpy()
-         mosaic_img = Image.fromarray(mosaic_img.astype("uint8"))
-         st.text('Modified image & about to return')
+         st.write('Model_path:{model_path}')
+         #style_mosaic = torch.jit.load(model_path)
+         #st.text('Model loaded')
+         #with torch.no_grad():
+         #    mosaic_img  = style_mosaic(content_img)
+         #    st.text('Generated image from model')
+         #mosaic_img = mosaic_img.squeeze(0).permute(1, 2, 0).clamp(0,255).numpy()
+         #mosaic_img = Image.fromarray(mosaic_img.astype("uint8"))
+         #st.text('Modified image & about to return')
+         mosaic_img = []
          return mosaic_img
