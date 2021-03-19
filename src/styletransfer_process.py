@@ -62,6 +62,7 @@ def style_process(style, file):
         
         if os.path.exists(model_candy_path):
             st.text('Candy Model path exists')
+            style_mosaic = torch.jit.load('./candy_cpu_scripted.pt')
         
         if not os.path.exists(model_udnie_path):
             gdd.download_file_from_google_drive(file_id='13iyRJC8vMblpMUORkXQL9eKOHXU3-XIu', dest_path='./udnie_cpu_scripted.pt', unzip=False)
