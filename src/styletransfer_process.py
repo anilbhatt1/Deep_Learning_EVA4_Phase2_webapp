@@ -124,9 +124,10 @@ def style_process(style, file):
 
 def gen_style_img(content_img, model_path):
          st.text('Trying to load model')
-         st.write('Model_path:{model_path}')
+         st.write('Model_path',model_path)
+         style_mosaic = torch.jit.load('./mosaic_cpu_scripted.pt')
          #style_mosaic = torch.jit.load(model_path)
-         #st.text('Model loaded')
+         st.text('Model loaded')
          #with torch.no_grad():
          #    mosaic_img  = style_mosaic(content_img)
          #    st.text('Generated image from model')
