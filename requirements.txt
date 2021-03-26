@@ -1,5 +1,6 @@
 https://download.pytorch.org/whl/cpu/torch-1.5.0%2Bcpu-cp38-cp38-linux_x86_64.whl
 https://download.pytorch.org/whl/cpu/torchvision-0.6.0%2Bcpu-cp38-cp38-linux_x86_64.whl
+https://files.pythonhosted.org/packages/f2/17/e7c588245aece7aa93f360894179374830daf60d7ed0bbb59332de3b3b61/torchtext-0.6.0-py3-none-any.whl
 Pillow==8.1.0
 streamlit==0.77.0
 googledrivedownloader==0.4
@@ -8,6 +9,8 @@ opencv-python-headless==3.4.10.35
 urllib3==1.26.3
 onnxruntime==1.6.0
 ffmpeg-python==0.2.0
+spacy==2.3.2
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz#egg=en_core_web_sm==2.3.1
 #torch==1.7.1
 #torchvision==0.8.2
 #urllib3==1.26.3
