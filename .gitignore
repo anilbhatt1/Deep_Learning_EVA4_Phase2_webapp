@@ -28,12 +28,13 @@ venv.bak/
 __pycache__
 req.txt  
 
-# Pre-trained models (These will be downloaded on the fly)
+# Pre-trained models (These will be downloaded on the fly in heroku app, hence can be ignored)
 *.pt
 *.dat
 *.dat.bz2
 *.onnx
 *.zip
+*.pkl
 flyingobject_model.pt
 shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat.bz2
@@ -46,6 +47,8 @@ candy_cpu_scripted.pt
 mosaic_cpu_scripted.pt
 rain_princess_cpu_scripted.pt
 udnie_cpu_scripted.pt
+conv_senti_analysis_vocab.pkl
+Conv_Senti_Analysis_CPU.pt
 
 # Back-up directory
 backup/
