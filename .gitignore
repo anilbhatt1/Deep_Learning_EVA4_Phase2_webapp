@@ -49,6 +49,8 @@ rain_princess_cpu_scripted.pt
 udnie_cpu_scripted.pt
 conv_senti_analysis_vocab.pkl
 Conv_Senti_Analysis_CPU.pt
+conv_multiqn_analysis_CPU.pt
+conv_multiqn_analysis_vocab.pkl
 
 # Back-up directory
 backup/

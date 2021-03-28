@@ -12,11 +12,11 @@ def write():
     st.markdown("<h1 style='text-align: center; color: black;font-size: 30px;'>Sentiment Analysis</h1>", unsafe_allow_html=True)
     st.write(
              """
-             This app deals returning sentiment of an input review message. 3 possible outcomes are 'Positive', 'Neutral' Or 'Negative'.
+             This app returns sentiment of an input review message. 3 possible outcomes are 'Positive', 'Neutral' Or 'Negative'.
              App uses an NLP model built based on CNNs. Model was trained on IMDB review data and hence will work best for
              text given in form of movie reviews. Tokenization is done using spacy and vocab of 25000 words built using glove.6B.100d.
              - [Github code reference(bentrevett)](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/master/4%20-%20Convolutional%20Sentiment%20Analysis.ipynb)
-             - [Github link for customized NLP model (used in this app)](https://github.com/anilbhatt1/Deep_Learning_EVA4_Phase2/blob/master/S9_Neural_Embeddings/E4P2S9_Convolutional_Sentiment_Analysis.ipynb)
+             - [Github link for customized NLP model (used in this app)](https://github.com/anilbhatt1/Deep_Learning_EVA4_Phase2/blob/master/S9_Neural_Embeddings/E4P2S9_Convolutional_Sentiment_Analysis_cpu.ipynb)
              - [Github link for webapp](https://github.com/anilbhatt1/Deep_Learning_EVA4_Phase2_webapp)
              """
              )

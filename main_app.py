@@ -12,6 +12,7 @@ import src.vae
 import src.srgan
 import src.styletransfer
 import src.sentianalysis
+import src.multiqnanalysis
 import src.articles
 import src.about
 
@@ -29,6 +30,7 @@ PAGES = {
         "SRGAN - Image Super Resolution":src.srgan,
         "Style Transfer":src.styletransfer,
         "Sentiment Analysis":src.sentianalysis,
+        "Multi Question Analysis":src.multiqnanalysis,
         "Articles":src.articles,
         "About":src.about
         }
