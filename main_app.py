@@ -13,6 +13,8 @@ import src.srgan
 import src.styletransfer
 import src.sentianalysis
 import src.multiqnanalysis
+#import src.gerengtranslate
+import src.imgcaption
 import src.articles
 import src.about
 
@@ -31,6 +33,8 @@ PAGES = {
         "Style Transfer":src.styletransfer,
         "Sentiment Analysis":src.sentianalysis,
         "Multi Question Analysis":src.multiqnanalysis,
+ #       "German English Translator":src.gerengtranslate,
+        "Image Captioning":src.imgcaption,
         "Articles":src.articles,
         "About":src.about
         }

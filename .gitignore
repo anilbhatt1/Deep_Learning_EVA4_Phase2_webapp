@@ -35,6 +35,7 @@ req.txt
 *.onnx
 *.zip
 *.pkl
+*.json
 flyingobject_model.pt
 shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat.bz2
@@ -51,6 +52,10 @@ conv_senti_analysis_vocab.pkl
 Conv_Senti_Analysis_CPU.pt
 conv_multiqn_analysis_CPU.pt
 conv_multiqn_analysis_vocab.pkl
+WORDMAP_flickr8k_5_cap_per_img_5_min_word_freq.json
+Test_flickr8k_caption.decoder.scripted.pt
+Test_flickr8k_caption.encoder.scripted.pt
+
 
 # Back-up directory
 backup/
